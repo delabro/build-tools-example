@@ -17,19 +17,19 @@ run: `npm install`
 run:  `npm run build:css`
 
 Compile Sass to CSS and watches 'src/sass'
-directory for changes.
+directory for changes. 
 
 * Lint and Browserify JavaScript 
 
 run: `npm run build:js`
 
-Lint and Browserify JavaScript and watch 'src/js' directory for changes.
+Lint and Browserify JavaScript and watch 'src/js' directory for changes. Minifies JavaScript.
 
 * Compile CSS, Lint and Browserify JavaScript 
 
 run: `npm run build:watch`
 
-Compile Sass to CSS, Lint and Browserify JavaScript and watch 'src' directory for changes.
+Compile Sass to CSS, Lint and Browserify JavaScript and watch 'src' directory for changes. Autoprefixes CSS and and watches 'src' directory for changes.
 
 * Browsersync
 

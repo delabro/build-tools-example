@@ -10,11 +10,13 @@
     "sticky-scroll": "^1.0.4"
   },
   "scripts": {
-    "build:sass": "mkdir -p public/css && node-sass --include-path scss src/sass/styles.scss public/css/styles.css",
+    "prebuild:sass": "mkdir -p public/css && node-sass --include-path scss src/sass/styles.scss public/css/styles.css",
+    "build:sass":"postcss --use autoprefixer -b 'last 2 versions' < public/css/styles.css | postcss --use cssnano > public/css/styles.min.css",
     "build:css": "watch 'npm run build:sass' src/sass/",
     "lint": "jshint src/js/",
     "prebuild:browserify": "npm run lint",
-    "build:browserify": "mkdir -p public/js && browserify src/js/main.js > public/js/bundle.js",
+    "build:browserify": "mkdir -p public/js && browserify src/js/main.js > public/js/bundle.js
+    -d -p [minifyify --map bundle.js.map --output piblic/js/bundle.js.map] > public/js/bundle.js",
     "build:js": "watch 'npm run build:browserify' src/js/",
     "build": "npm run build:sass && npm run build:browserify",
     "build:watch": "watch 'npm run build' src/",

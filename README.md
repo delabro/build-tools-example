@@ -39,6 +39,11 @@ run: `npm run browser-sync`
 
 Sync browser when all HTML files and files in the 'public' directory change.
 
+* Parallel Shell
+
+run: `npm run build:dev`
+Runs both 'npm run build:watch' and 'npm run borwser-sync' at the same time.
+
 ## Licence 
 
 Licensed under the MIT Licence

@@ -6,17 +6,19 @@
     "browserify": "^13.1.0",
     "jshint": "^2.9.3",
     "node-sass": "^3.10.1",
+    "parallelshell": "^2.0.0",
     "sticky-scroll": "^1.0.4"
   },
   "scripts": {
     "build:sass": "mkdir -p public/css && node-sass --include-path scss src/sass/styles.scss public/css/styles.css",
     "build:css": "watch 'npm run build:sass' src/sass/",
     "lint": "jshint src/js/",
-    "prebuild:browserify":"npm run lint",
-    "build:browserify":"mkdir -p public/js && browserify src/js/main.js > public/js/bundle.js",
+    "prebuild:browserify": "npm run lint",
+    "build:browserify": "mkdir -p public/js && browserify src/js/main.js > public/js/bundle.js",
     "build:js": "watch 'npm run build:browserify' src/js/",
-    "build":"npm run build:css && npm run build:js",
-    "build:watch" :"watch 'npm run build' src/",
-    "browser-sync": "browser-sync start --server --files '*.html' 'public'"
+    "build": "npm run build:sass && npm run build:browserify",
+    "build:watch": "watch 'npm run build' src/",
+    "browser-sync": "browser-sync start --server --files '*.html' 'public/'",
+    "build:dev":"parallelshell 'npm run build:watch' 'npm run browser-sync'"
   }
 }
